@@ -184,6 +184,23 @@ public class Game extends PApplet
 			}
 		
 		} // end mode 1
+		
+		if(mode == 1 && Spaceship.score < 0)
+		{
+			mode = 2;
+		}
+		
+		if(mode == 2)
+		{
+			pushStyle();
+			fill(255, 0, 0);
+		    String fontName = "Calibri Light Italic";
+		    myFont = createFont(fontName, 70);
+		    textFont(myFont);
+			text("G A M E", width/2 - 200, height/2);
+			text("O V E R", width/2 - 70, height/2 + 60);
+			popStyle();
+		}
 	}//end draw
 	
 
