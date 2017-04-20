@@ -1,4 +1,13 @@
+import processing.core.PVector;
 
-public class GameObject {
-
+abstract class GameObject 
+{
+	  
+	GameObject()
+	{
+	    
+	}
+	  
+	abstract void update();  
+	abstract void render();
 }
