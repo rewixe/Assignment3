@@ -15,6 +15,13 @@ public class Spaceship extends GameObject
 	PShape shape, flame;
 	char n, s, w, e;
 	
+	static char fire;
+	int health;
+	private int K = 2;
+	int type;
+	public static int ammo;
+	public static int score;
+	
 	void render()
 	{
 		
