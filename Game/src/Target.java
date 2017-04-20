@@ -16,6 +16,11 @@ public class Target extends GameObject implements SpecialObj
 		parent = p;
 		theta = 0;
 		forward = new PVector(parent.random(-1,1), parent.random(-1,1));
+		start();
 	}
-
+	
+	void start()
+	{
+		
+	}
 }
