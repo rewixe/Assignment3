@@ -253,7 +253,29 @@ public class Game extends PApplet
 			
 			popStyle();
 		}//end settings mode
-	}//end draw
+		
+		if(mode == 4)
+		{
+			pushStyle();
+			textFont(myFont);
+			textSize(50);
+			fill(255, 0, 0);
+			textAlign(CENTER);
+			text("E X I T", width/2, height/2-300);
+			popStyle();
+		}
+		
+		if(mode == 5)
+		{
+			pushStyle();
+			textFont(myFont);
+			textSize(60);
+			fill(255, 0, 0);
+			textAlign(CENTER);
+			text("V I C T O R Y !", width/2, height/2);
+			popStyle();
+		}
+	}//END DRAW
 	
 
 }//end class
