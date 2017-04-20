@@ -25,6 +25,14 @@ class Shot extends GameObject
 	
 	void render()
 	{
+		parent.pushMatrix();
+		parent.pushStyle();
+		parent.translate(pos.x, pos.y);
+		parent.rotate(theta);
+		parent.stroke(255);
+		parent.line(0, - len / 2, 0, len / 2);
+		parent.popStyle();
+		parent.popMatrix();
 		
 	}
 	
