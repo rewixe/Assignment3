@@ -57,5 +57,12 @@ public class Game extends PApplet
 		}
 		return false;
 	}
+	
+	public void draw()
+	{	
+		background(0);
+		stroke(0, 255, 0);
+		noFill();
+	}
 
 }
