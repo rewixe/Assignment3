@@ -45,6 +45,10 @@ public class Enemy extends GameObject implements NegativeObj
 		
 	}
 	
+	static float spsEnemy = 0.05f;
+	float limit = 5.0f / spsEnemy;
+	float limitPass = limit;
+	
 	void update()
 	{
 		
