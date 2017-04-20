@@ -33,11 +33,47 @@ class Shot extends GameObject
 		parent.line(0, - len / 2, 0, len / 2);
 		parent.popStyle();
 		parent.popMatrix();
-		
 	}
 	
 	void update()
 	{
+		forward.x = PApplet.sin(theta);
+		  forward.y = - PApplet.cos(theta);
+	    
+		  pos.add(PVector.mult(PVector.mult(forward, speed), Main.timeDelta));
+		  
+		  if (pos.x > parent.width)
+		  {
+			  pos.x = 0;
+		  }
+		  
+		  if (pos.x < 0)
+		  {
+			  pos.x = parent.width;
+		  }
+		  
+		  if (pos.y > parent.height)
+		  {
+			  pos.y = 0;
+		  }
+		  
+		  if (pos.y < 0)
+		  {
+			  pos.y = parent.height;
+		  }
+		  
+		  on += Game.timeDelta;
+	    
+		  if (on > lambda)
+		  {
+			  Game.gameObjects.remove(this);
+		  }
+		  
+		  for(int i = 0 ; i < Game.gameObjects.size() ; i ++)
+		    {
+		        GameObject go = Game.gameObjects.get(i);
+		        	        
+		    }
 		
 	}
 	
