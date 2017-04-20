@@ -182,6 +182,17 @@ public class Spaceship extends GameObject
 	    	parent.popStyle();
 	    	parent.popMatrix();
 	    }
+	    
+	    if (Game.checkKey(fire) && limitPass > limit && ammo > 0 && Game.mode == 1 && type == 0)
+	    {
+	    	parent.line(246, 250, 400, 400);
+	    	parent.background(255, 0, 0);
+	    	PVector bp = PVector.add(pos, PVector.mult(forward, 40));
+	    	Shot b = new Shot((Game) parent, bp.x, bp.y, theta, 20, 5, 0);
+	    	Game.gameObjects.add(b);
+	    	limitPass = 0;
+	    	ammo --;
+	    }
 		
 	}
 	

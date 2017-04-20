@@ -313,7 +313,6 @@ public class Game extends PApplet
 		{
 			mode = 0;
 		}
-	}
+	}//end mouse clicked
 	
-
-}//end class
+}//end Game
