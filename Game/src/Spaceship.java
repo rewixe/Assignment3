@@ -22,6 +22,11 @@ public class Spaceship extends GameObject
 	public static int ammo;
 	public static int score;
 	
+	Spaceship(Game p, float x, float y, float theta, float size, char n, char s, char w, char e, char fire, int type)
+	{
+		
+	}
+	
 	void render()
 	{
 		
