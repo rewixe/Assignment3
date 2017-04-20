@@ -201,6 +201,58 @@ public class Game extends PApplet
 			text("O V E R", width/2 - 70, height/2 + 60);
 			popStyle();
 		}
+		
+		if(mode == 3)
+		{
+			pushStyle();
+			textFont(myFont);
+			textSize(45);
+			stroke(255, 0, 0);
+			noFill();
+			textAlign(CENTER);
+			pushStyle();
+			fill(255, 0, 0);
+			text("S E T T I N G S", width/2, height/2-300);
+			textSize(18);
+			text("S P E E D", width/2-130, height/2-100);
+			text("S I Z E", width/2-130, height/2-30);
+			text("E N E M I E S", width/2-130, height/2+40);
+			text("M E N U", width/2, height-120);
+			
+			text("1", width/2+27, height/2-100);
+			text("2", width/2+107, height/2-100);
+			text("3", width/2+187, height/2-100);
+			
+			text("1", width/2+27, height/2-30);
+			text("2", width/2+107, height/2-30);
+			text("3", width/2+187, height/2-30);
+			
+			text("1", width/2+27, height/2+40);
+			text("2", width/2+107, height/2+40);
+			text("3", width/2+187, height/2+40);
+			
+			popStyle();
+			
+			rect(width/2-190, height/2-130, 120, 50, 20);
+			rect(width/2-190, height/2-60, 120, 50, 20);
+			rect(width/2-190, height/2+10, 120, 50, 20);
+			
+			rect(width/2, height/2-130, 50, 50, 20);
+			rect(width/2+80, height/2-130, 50, 50, 20);
+			rect(width/2+160, height/2-130, 50, 50, 20);
+			
+			rect(width/2, height/2-60, 50, 50, 20);
+			rect(width/2+80, height/2-60, 50, 50, 20);
+			rect(width/2+160, height/2-60, 50, 50, 20);
+			
+			rect(width/2, height/2+10, 50, 50, 20);
+			rect(width/2+80, height/2+10, 50, 50, 20);
+			rect(width/2+160, height/2+10, 50, 50, 20);
+			
+			rect(width/2-60, height-150, 120, 50, 20);
+			
+			popStyle();
+		}//end settings mode
 	}//end draw
 	
 
