@@ -72,7 +72,16 @@ class Shot extends GameObject
 		  for(int i = 0 ; i < Game.gameObjects.size() ; i ++)
 		    {
 		        GameObject go = Game.gameObjects.get(i);
-		        	       //powerup... 
+		        
+		        if (go instanceof SpecialObj)
+		        {
+		          SpecialObj p = (SpecialObj) go; // p is of type power up so the only method we can call on p is applyTo
+		          if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < 30)
+		          {
+		            p.applyTo(this);
+		            Game.gameObjects.remove(go);
+		          }
+		        }
 		    }
 		
 	}
