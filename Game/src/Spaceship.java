@@ -163,6 +163,25 @@ public class Spaceship extends GameObject
 	    {
 	    	this.pos.x = 0 - 30;
 	    }
+	    
+	    if(Game.checkKey(n) && type == 1)
+	    {
+	    	parent.pushMatrix();
+	    	parent.translate(this.pos.x, this.pos.y);
+	    	parent.rotate(theta);
+	    	parent.pushStyle();
+	    	parent.stroke(255, 106, 0);
+	    	parent.fill(255, 106, 0);
+	    	flame = parent.createShape();
+	    	flame.beginShape();
+	    	flame.vertex(0, 0);
+		    flame.vertex(6, 18);
+		    flame.vertex(12, 0);
+		    flame.endShape(PConstants.CLOSE);
+		    parent.shape(flame, -6, 35);
+	    	parent.popStyle();
+	    	parent.popMatrix();
+	    }
 		
 	}
 	
