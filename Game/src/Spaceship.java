@@ -44,10 +44,11 @@ public class Spaceship extends GameObject
 	    this.health = 10;
 	    Spaceship.ammo = 10;
 	    Spaceship.score = 80;
+	    start();
 		
 	}
 	
-	void create()
+	void start()
 	{
 		
 	}
