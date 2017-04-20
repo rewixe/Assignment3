@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PVector;
 
 public class Enemy extends GameObject implements NegativeObj 
@@ -28,4 +29,24 @@ public class Enemy extends GameObject implements NegativeObj
 	    
 	}
 	
+	void render()
+	{
+		parent.pushStyle();
+		parent.strokeWeight(3);
+		parent.pushMatrix();
+	    parent.translate(pos.x, pos.y);
+	    parent.noFill();
+	    parent.rotate(theta);
+	    parent.stroke(255, 0, 0);
+	    parent.rectMode(PConstants.CENTER);
+	    parent.rect(0, 0, 30, 30);
+	    parent.popMatrix();
+	    parent.popStyle();
+		
+	}
+	
+	void update()
+	{
+		
+	}
 }
