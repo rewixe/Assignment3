@@ -19,31 +19,32 @@ public class Target extends GameObject implements SpecialObj
 		start();
 	}
 	
+	public void applyTo(Spaceship p) 
+	{
+		Spaceship.ammo ++;	
+	}
+
+	public void applyTo(Shot p) 
+	{
+		if (Shot.type == 0)
+		{
+			Spaceship.score ++;
+		}
+	}
+	
 	void start()
 	{
 		
 	}
 
-	@Override
-	public void applyTo(Spaceship p) {
+	void update() 
+	{
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void applyTo(Shot p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	void render() {
+	void render() 
+	{
 		// TODO Auto-generated method stub
 		
 	}
