@@ -121,6 +121,48 @@ public class Spaceship extends GameObject
 	
 	void update()
 	{
+		forward.x = PApplet.sin(theta);
+	    forward.y  = -PApplet.cos(theta);
+	    
+	    if (Game.checkKey(n))
+	    {
+	      f.add(PVector.mult(forward, speed));      
+	    }
+	    
+	    if (Game.checkKey(s))
+	    {
+	      f.add(PVector.mult(forward, -speed));      
+	    }
+	    
+	    if (Game.checkKey(w))  
+	    {
+	      theta -= 0.1f;
+	    }
+	    
+	    if (Game.checkKey(e))
+	    {
+	      theta += 0.1f;
+	    }
+	    
+	    if(this.pos.y < -30)
+	    {
+	    	this.pos.y = parent.height + 15;
+	    }
+	    
+	    if(this.pos.y > parent.height + 30)
+	    {
+	    	this.pos.y = -30;
+	    }
+	    
+	    if(this.pos.x < -30)
+	    {
+	    	this.pos.x = parent.width + 15;
+	    }
+	    
+	    if(this.pos.x > parent.width + 30)
+	    {
+	    	this.pos.x = 0 - 30;
+	    }
 		
 	}
 	
