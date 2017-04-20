@@ -16,9 +16,9 @@ public class Game extends PApplet
 	static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 	static int mode = 0;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void main(String[] args) 
+	{
+		PApplet.main("Game");
 	}
 
 }
