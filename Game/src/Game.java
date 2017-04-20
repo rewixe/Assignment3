@@ -20,5 +20,11 @@ public class Game extends PApplet
 	{
 		PApplet.main("Game");
 	}
+	
+	public void settings()
+	{
+		fullScreen();
+		//size(1000, 800);
+	}
 
 }
