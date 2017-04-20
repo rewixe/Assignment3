@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PShape;
 import processing.core.PVector;
 
@@ -50,6 +51,57 @@ public class Spaceship extends GameObject
 	
 	void start()
 	{
+		if(type == 0)
+		{
+			parent.pushStyle();
+		    shape = parent.createShape();
+		    shape.beginShape();
+		    shape.stroke(255);
+		    shape.fill(0);
+		    shape.strokeWeight(2);
+		    shape.vertex(0*K, -10*K);
+		    shape.vertex(10*K, 0*K);
+		    shape.vertex(13*K, 0*K);
+		    shape.vertex(15*K, 18*K);
+		    shape.vertex(10*K, 10*K);
+		    shape.vertex(5*K, 10*K);
+		    shape.vertex(5*K, 15*K);
+		    shape.vertex(-5*K, 15*K); 
+		    shape.vertex(-5*K, 10*K); 
+		    shape.vertex(-10*K, 10*K);
+		    shape.vertex(-15*K, 18*K); 
+		    shape.vertex(-13*K, 0*K); 
+		    shape.vertex(-10*K, 0*K);
+		    shape.vertex(0*K, -10*K);
+		    shape.endShape(PConstants.CLOSE);
+		    parent.popStyle();
+		}
+		
+		if(type == 1)
+		{
+			parent.pushStyle();
+			shape = parent.createShape();
+		    shape.beginShape();
+		    shape.stroke(255, 0, 0);
+		    shape.noFill();
+		    shape.strokeWeight(6);
+		    shape.vertex(0*K, -10*K);
+		    shape.vertex(10*K, 0*K);
+		    shape.vertex(13*K, 0*K);
+		    shape.vertex(15*K, 18*K);
+		    shape.vertex(10*K, 10*K);
+		    shape.vertex(5*K, 10*K);
+		    shape.vertex(5*K, 15*K);
+		    shape.vertex(-5*K, 15*K); 
+		    shape.vertex(-5*K, 10*K); 
+		    shape.vertex(-10*K, 10*K);
+		    shape.vertex(-15*K, 18*K); 
+		    shape.vertex(-13*K, 0*K); 
+		    shape.vertex(-10*K, 0*K);
+		    shape.vertex(0*K, -10*K);
+		    shape.endShape(PConstants.CLOSE);
+		    parent.popStyle();
+		}
 		
 	}
 	
