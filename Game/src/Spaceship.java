@@ -22,6 +22,7 @@ public class Spaceship extends GameObject
 	private int K = 2;
 	int type;
 	public static int ammo;
+	static float speed = 300;
 	public static int score;
 	
 	Spaceship(Game p, float x, float y, float theta, float size, char n, char s, char w, char e, char fire, int type)
@@ -104,6 +105,10 @@ public class Spaceship extends GameObject
 		}
 		
 	}
+	
+	static float sps = 2;
+	static float limit = 1.0f / sps;
+	static float limitPass = limit;
 	
 	void render()
 	{
