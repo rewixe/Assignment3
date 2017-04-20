@@ -51,6 +51,25 @@ public class Enemy extends GameObject implements NegativeObj
 	
 	void update()
 	{
+		theta += 0.2; //rotation of enemy
+		pos.add(forward);
+		
+	    if ((parent.millis()/100) % 30 == 0 && limitPass > limit && Game.mode == 1)
+	    {
+	    	parent.line(246, 250, 400, 400);
+	    	parent.background(255, 0, 0);
+	    	PVector bp = PVector.add(pos, PVector.mult(forward, 40));
+	    	Shot b = new Shot((Game) parent, bp.x, bp.y, theta, 20, 5, 1);
+	    	Game.gameObjects.add(b);
+	    	limitPass = 0; //hmm
+	    	if(limitPass > limit)
+	    	{
+	    		Game.gameObjects.remove(b);
+	    	}
+	    }
+	    
+	    limitPass = limitPass + (Game.timeDelta);
+		
 		
 	}
 }
