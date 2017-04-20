@@ -47,6 +47,11 @@ public class Spaceship extends GameObject
 		
 	}
 	
+	void create()
+	{
+		
+	}
+	
 	void render()
 	{
 		
