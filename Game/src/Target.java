@@ -23,4 +23,28 @@ public class Target extends GameObject implements SpecialObj
 	{
 		
 	}
+
+	@Override
+	public void applyTo(Spaceship p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void applyTo(Shot p) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	void render() {
+		// TODO Auto-generated method stub
+		
+	}
 }
