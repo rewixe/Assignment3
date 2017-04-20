@@ -1,4 +1,4 @@
-
-public class NegativeObj {
-
+interface NegativeObj 
+{
+	void applyTo(Spaceship p);
 }
