@@ -93,9 +93,9 @@ public class Target extends GameObject implements SpecialObj
 		
 	}
 
-	void render() 
+	void update() 
 	{
-		// TODO Auto-generated method stub
-		
+		theta += 0.05;
+		pos.add(forward);	
 	}
 }
