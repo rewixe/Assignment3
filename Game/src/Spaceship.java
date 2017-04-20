@@ -107,7 +107,11 @@ public class Spaceship extends GameObject
 	
 	void render()
 	{
-		
+		parent.pushMatrix();
+	    parent.translate(pos.x, pos.y);
+	    parent.rotate(theta);    
+	    parent.shape(shape, 0, 0);
+	    parent.popMatrix(); 
 	}
 	
 	void update()
