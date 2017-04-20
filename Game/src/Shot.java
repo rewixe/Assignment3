@@ -40,7 +40,7 @@ class Shot extends GameObject
 		forward.x = PApplet.sin(theta);
 		  forward.y = - PApplet.cos(theta);
 	    
-		  pos.add(PVector.mult(PVector.mult(forward, speed), Main.timeDelta));
+		  pos.add(PVector.mult(PVector.mult(forward, speed), Game.timeDelta));
 		  
 		  if (pos.x > parent.width)
 		  {
@@ -72,7 +72,7 @@ class Shot extends GameObject
 		  for(int i = 0 ; i < Game.gameObjects.size() ; i ++)
 		    {
 		        GameObject go = Game.gameObjects.get(i);
-		        	        
+		        	       //powerup... 
 		    }
 		
 	}
