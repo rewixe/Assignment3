@@ -7,13 +7,13 @@ public class Spaceship extends GameObject
 	
 	PApplet parent;
 	
-	PVector velocity;
-	PVector accel;
+	PVector v;
+	PVector acc;
 	float theta; 
 	float radius;
-    float mass = 1;
+    float wgt = 1;
 	PShape shape, flame;
-	char up, down, left, right;
+	char n, s, w, e;
 	
 	void render()
 	{
