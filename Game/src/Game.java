@@ -277,5 +277,43 @@ public class Game extends PApplet
 		}
 	}//END DRAW
 	
+	public void mouseClicked()
+	{
+		if(mouseX > width/2-75 && mouseX < width/2+75 && mouseY > height/2+100 && mouseY < height/2+160 && mode == 0)
+		{
+			mode = 1;
+		}
+		
+		if(mouseX > width/2-75 && mouseX < width/2+75 && mouseY > height/2+170 && mouseY < height/2+230 && mode == 0)
+		{
+			mode = 3;
+		}
+		
+		if(mouseX > width/2-75 && mouseX < width/2+75 && mouseY > height/2+240 && mouseY < height/2+300 && mode == 0)
+		{
+			exit();
+		}
+		
+		if(mouseX > width/2 && mouseX < width/2+50 && mouseY > height/2-130 && mouseY < height/2-80 && mode == 3)
+		{
+			Spaceship.speed = 100;
+		}
+		
+		if(mouseX > width/2+80 && mouseX < width/2+130 && mouseY > height/2-130 && mouseY < height/2-80 && mode == 3)
+		{
+			Spaceship.speed = 300;
+		}
+		
+		if(mouseX > width/2+160 && mouseX < width/2+210 && mouseY > height/2-130 && mouseY < height/2-80 && mode == 3)
+		{
+			Spaceship.speed = 500;
+		}
+		
+		if(mouseX > width/2-60 && mouseX < width/2+10 && mouseY > height-150 && mouseY < height-100 && mode == 3)
+		{
+			mode = 0;
+		}
+	}
+	
 
 }//end class
