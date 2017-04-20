@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PFont;
+import processing.core.PVector;
 
 public class Game extends PApplet 
 {
@@ -169,6 +170,17 @@ public class Game extends PApplet
 				{
 					mode = 5;
 				}
+			}
+			
+			if (frameCount % 60 == 0)
+			{
+				Target ammo = new Target(this);
+				ammo.pos = new PVector(random(0, width), random(0, height));
+				gameObjects.add(ammo);
+				
+				Enemy pop = new Enemy(this);
+				pop.pos = new PVector(random(0, width), random(0, height));
+				gameObjects.add(pop);
 			}
 		
 		} // end mode 1
