@@ -79,9 +79,17 @@ public class Target extends GameObject implements SpecialObj
 		
 	}
 
-	void update() 
+	void render() 
 	{
-		// TODO Auto-generated method stub
+		parent.pushStyle();
+		parent.stroke(0, 255, 0);
+	    parent.strokeWeight(1);
+	    parent.pushMatrix();
+	    parent.translate(pos.x, pos.y);
+	    parent.rotate(theta/5);
+	    parent.shape(obstacle, 0, 0);
+	    parent.popMatrix();
+	    parent.popStyle();
 		
 	}
 
