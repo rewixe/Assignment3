@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PConstants;
 import processing.core.PShape;
 import processing.core.PVector;
 
@@ -9,7 +10,7 @@ public class Target extends GameObject implements SpecialObj
 	PApplet parent;
 	
 	float theta;
-	PShape test;
+	PShape obstacle;
 	
 	Target(Game p)
 	{
@@ -34,6 +35,47 @@ public class Target extends GameObject implements SpecialObj
 	
 	void start()
 	{
+		obstacle = parent.createShape();
+	    obstacle.beginShape();
+	    parent.stroke(0, 255, 0);
+	    parent.noFill();
+	    parent.strokeWeight(1);
+		int rand = (int) parent.random(1, 4);
+	    if (rand == 1)
+	    {
+	      obstacle.vertex(parent.random(-20, -40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(20,40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(20,40), parent.random(20, 40));
+	      obstacle.vertex(parent.random(-20, -40), parent.random(20, 40));
+	    }
+	    if (rand == 2)
+	    {
+	      obstacle.vertex(parent.random(-20, -40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(-10, 10), parent.random(-40, -60));
+	      obstacle.vertex(parent.random(20,40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(20,40), parent.random(20, 40));
+	      obstacle.vertex(parent.random(-20, -40), parent.random(20, 40));
+	    }
+	    if (rand == 3)
+	    {
+	      obstacle.vertex(parent.random(-20, -40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(-10, 10), parent.random(-40, -60));
+	      obstacle.vertex(parent.random(20,40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(40,50), parent.random(10, 30));
+	      obstacle.vertex(parent.random(20,40), parent.random(20, 40));
+	      obstacle.vertex(parent.random(-20, -40), parent.random(20, 40));
+	    }
+	    if (rand == 4)
+	    {
+	      obstacle.vertex(parent.random(-20, -40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(-10, 10), parent.random(-40, -60));
+	      obstacle.vertex(parent.random(20,40), parent.random(-20, -40));
+	      obstacle.vertex(parent.random(40,50), parent.random(10, 30));
+	      obstacle.vertex(parent.random(20,40), parent.random(20, 40));
+	      obstacle.vertex(parent.random(-20, -40), parent.random(20, 40));
+	      obstacle.vertex(parent.random(-10, 10), parent.random(-10, 10));
+	    }
+	    obstacle.endShape(PConstants.CLOSE);
 		
 	}
 
