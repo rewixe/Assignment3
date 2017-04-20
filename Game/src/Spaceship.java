@@ -193,6 +193,13 @@ public class Spaceship extends GameObject
 	    	limitPass = 0;
 	    	ammo --;
 	    }
+	    
+	    acc = PVector.div(f, wgt);
+	    v.add(PVector.mult(acc, Game.timeDelta));
+	    pos.add(PVector.mult(v, Game.timeDelta));
+	    f.x = f.y = 0;
+	    v.mult(0.99f);
+	    limitPass += Game.timeDelta;
 		
 	}
 	
