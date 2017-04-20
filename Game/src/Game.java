@@ -14,7 +14,6 @@ public class Game extends PApplet
 	int lvlCnt = 1;
 	
 	static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
-	static int mode = 0;
 
 	public static void main(String[] args) 
 	{
