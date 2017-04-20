@@ -63,6 +63,64 @@ public class Game extends PApplet
 		background(0);
 		stroke(0, 255, 0);
 		noFill();
+		
+		if(mode == 0)
+		{
+			pushStyle();
+			fill(255, 0, 0);
+		    String fontName = "Calibri Light Italic";
+		    String fontName2 = "Liberation Sans Narrow";
+		    myFont = createFont(fontName, 60);
+		    textFont(myFont);
+		    pushStyle();
+		    textAlign(CENTER);
+			text("SPACE SHOOTER", width/2, height/2);
+			popStyle();
+			myFont2 = createFont(fontName2, 17);
+			textFont(myFont2);
+			pushStyle();
+			fill(0, 255, 0);
+			textAlign(CENTER);
+			text("Shoot green blocks to increase score, "
+					+ "hit them to increase ammo!", width/2, height/2 + 30);
+			popStyle();
+			pushStyle();
+			fill(255, 0, 0);
+			textAlign(CENTER);
+			text("Avoid red blocks!", width/2, height/2 + 60);
+			popStyle();
+			pushStyle();
+			textAlign(CENTER);
+			noFill();
+			stroke(255, 0, 0);
+			rect(width/2-75, height/2+100, 150, 60, 20);
+			text("P L A Y", width/2, height/2 + 135);
+			rect(width/2-75, height/2+170, 150, 60, 20);
+			text("S E T T I N G S", width/2, height/2 + 205);
+			rect(width/2-75, height/2+240, 150, 60, 20);
+			text("S C O R E B O A R D", width/2, height/2 + 275);
+			popStyle();
+			
+			stroke(255, 0, 0);
+			noFill();
+			strokeWeight(1);
+			ellipse(250, 265, 130, 130);
+			line(315, 265, 380, 210);
+			text("WASD to move, space to shoot", 380, 210);
+			popStyle();
+			
+			for (int i = gameObjects.size() -1 ; i >= 0  ; i --)
+			{
+				GameObject go = gameObjects.get(i);
+				if(go instanceof Spaceship)
+				{ 
+					go.update();
+					go.render();  
+				}
+			}
+			
+		}
 	}
+	
 
 }
