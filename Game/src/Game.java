@@ -119,10 +119,61 @@ public class Game extends PApplet
 				}
 			}
 			
-		}
+		} //end mode 0
 		
+		if(mode == 1 && Spaceship.score >= 0)
+		{	
+			noCursor();
+			pushStyle();
+			fill(0);
+			stroke(255, 0, 0);
+			rect((width/2)-75, height-80, 150, 60, 25);
+			rect((width/2) + 80, height-80, 85, 60, 25);
+			fill(255, 0, 0);
+			text("S C O R E :", (width/2) - 55, height-55);
+			text(Spaceship.score, (width/2) + 40, height-55);
+			text("A M M O :", (width/2) - 55, height-30);
+			text(Spaceship.ammo, (width/2) + 25, height-30);
+			text("L E V E L :", (width/2) + 90, height-55);
+			text(lvlCnt, (width/2) + 120, height-30);
+			popStyle();
+			
+			for (int i = gameObjects.size() -1 ; i >= 0  ; i --)
+			{
+				GameObject go = gameObjects.get(i); 
+				go.update();
+				go.render();
+				if(Spaceship.score > 20 && mode == 1)
+				{
+					Enemy.spsEnemy = 1;
+				}
+				
+				if(Spaceship.score > 40 && mode == 1)
+				{
+					Enemy.spsEnemy = 1.5f;
+					lvlCnt = 2;
+				}
+				
+				if(Spaceship.score > 60 && mode == 1)
+				{
+					Enemy.spsEnemy = 2;
+					lvlCnt = 3;
+				}
+				
+				if(Spaceship.score > 80 && mode == 1)
+				{
+					Enemy.spsEnemy = 3;
+					lvlCnt = 4;
+				}
+				
+				if(Spaceship.score > 99 && mode == 1)
+				{
+					mode = 5;
+				}
+			}
 		
-	}
+		} // end mode 1
+	}//end draw
 	
 
-}
+}//end class
