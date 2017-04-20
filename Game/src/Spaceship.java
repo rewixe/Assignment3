@@ -201,6 +201,39 @@ public class Spaceship extends GameObject
 	    v.mult(0.99f);
 	    limitPass += Game.timeDelta;
 		
+	    for(int i = 0 ; i < Game.gameObjects.size() ; i ++)
+	    {
+	        GameObject go = Game.gameObjects.get(i);
+	        if (go instanceof Shot)
+	        {
+	        	Shot b = (Shot) go;
+	        	if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius)
+	        	{
+	        		health--;
+	        		Game.gameObjects.remove(b);
+	        	}
+	        }
+	        
+	        if (go instanceof SpecialObj)
+	        {
+	          SpecialObj p = (SpecialObj) go; // p is of type so the only method we can call on p is applyTo
+	          if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius + 30)
+	          {
+	            p.applyTo(this);
+	            Game.gameObjects.remove(go);
+	          }
+	        }
+	        
+	        if (go instanceof NegativeObj)
+	        {
+	          NegativeObj p = (NegativeObj) go;
+	          if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius + 30)
+	          {
+	            p.applyTo(this);
+	            Game.gameObjects.remove(go);
+	          }
+	        }
+	    }
 	}
 	
 }
