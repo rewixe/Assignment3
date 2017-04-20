@@ -1,4 +1,5 @@
 import processing.core.PApplet;
+import processing.core.PVector;
 
 public class Enemy extends GameObject implements NegativeObj 
 {
@@ -8,5 +9,12 @@ public class Enemy extends GameObject implements NegativeObj
 	PApplet parent;
 	
 	float theta;
+	
+	Enemy(Game p)
+	{
+		parent = p;
+		theta = 0;
+		forward = new PVector(parent.random(-1,1), parent.random(-1,1));
+	}
 	
 }
