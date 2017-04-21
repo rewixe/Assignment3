@@ -18,7 +18,6 @@ public class Spaceship extends GameObject
 	char n, s, w, e;
 	
 	static char fire;
-	int health;
 	private int K = 2;
 	int type;
 	public static int ammo;
@@ -43,7 +42,6 @@ public class Spaceship extends GameObject
 	    this.n = n;
 	    this.s = s;
 	    this.fire = fire;
-	    this.health = 10;
 	    Spaceship.ammo = 10;
 	    Spaceship.score = 80;
 	    start();
