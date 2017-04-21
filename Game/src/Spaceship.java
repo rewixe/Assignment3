@@ -43,7 +43,7 @@ public class Spaceship extends GameObject
 	    this.s = s;
 	    this.fire = fire;
 	    Spaceship.ammo = 10;
-	    Spaceship.score = 80;
+	    Spaceship.score = 0;
 	    start();
 		
 	}
