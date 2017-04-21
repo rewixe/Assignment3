@@ -202,15 +202,6 @@ public class Spaceship extends GameObject
 	    for(int i = 0 ; i < Game.gameObjects.size() ; i ++)
 	    {
 	        GameObject go = Game.gameObjects.get(i);
-	        if (go instanceof Shot)
-	        {
-	        	Shot b = (Shot) go;
-	        	if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius)
-	        	{
-	        		health--;
-	        		Game.gameObjects.remove(b);
-	        	}
-	        }
 	        
 	        if (go instanceof SpecialObj)
 	        {
@@ -235,7 +226,7 @@ public class Spaceship extends GameObject
 	        if (go instanceof Hit)
 	        {
 	          Hit h = (Hit) go;
-	          if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius + 30)
+	          if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius)
 	          {
 	            h.applyTo(this);
 	            Game.gameObjects.remove(go);
