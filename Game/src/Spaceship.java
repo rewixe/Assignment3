@@ -185,8 +185,6 @@ public class Spaceship extends GameObject
 	    
 	    if (Game.checkKey(fire) && limitPass > limit && ammo > 0 && Game.mode == 1 && type == 0)
 	    {
-	    	parent.line(246, 250, 400, 400);
-	    	parent.background(255, 0, 0);
 	    	PVector bp = PVector.add(pos, PVector.mult(forward, 40));
 	    	Shot b = new Shot((Game) parent, bp.x, bp.y, theta, 20, 5, 0);
 	    	Game.gameObjects.add(b);
@@ -230,6 +228,16 @@ public class Spaceship extends GameObject
 	          if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius + 30)
 	          {
 	            p.applyTo(this);
+	            Game.gameObjects.remove(go);
+	          }
+	        }
+	        
+	        if (go instanceof Hit)
+	        {
+	          Hit h = (Hit) go;
+	          if (Game.dist(go.pos.x, go.pos.y, this.pos.x, this.pos.y) < radius + 30)
+	          {
+	            h.applyTo(this);
 	            Game.gameObjects.remove(go);
 	          }
 	        }

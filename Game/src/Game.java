@@ -23,8 +23,8 @@ public class Game extends PApplet
 	
 	public void settings()
 	{
-		fullScreen();
-		//size(1000, 800);
+		//fullScreen();
+		size(1000, 800);
 	}
 	
 	public void setup()

@@ -1,7 +1,7 @@
 import processing.core.PApplet;
 import processing.core.PVector;
 
-class Shot extends GameObject
+class Shot extends GameObject implements Hit
 {
 	PApplet parent;
 	float theta;
@@ -22,6 +22,11 @@ class Shot extends GameObject
 		this.on = 0;
 		this.type = type;
     }
+	
+	public void applyTo(Spaceship p) 
+	{
+		Spaceship.score --;	
+	}
 	
 	void render()
 	{
