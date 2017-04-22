@@ -97,8 +97,6 @@ public class Game extends PApplet
 			text("P L A Y", width/2, height/2 + 135);
 			rect(width/2-75, height/2+170, 150, 60, 20);
 			text("S E T T I N G S", width/2, height/2 + 205);
-			rect(width/2-75, height/2+240, 150, 60, 20);
-			text("S C O R E B O A R D", width/2, height/2 + 275);
 			popStyle();
 			
 			stroke(255, 0, 0);
@@ -287,11 +285,6 @@ public class Game extends PApplet
 		if(mouseX > width/2-75 && mouseX < width/2+75 && mouseY > height/2+170 && mouseY < height/2+230 && mode == 0)
 		{
 			mode = 3;
-		}
-		
-		if(mouseX > width/2-75 && mouseX < width/2+75 && mouseY > height/2+240 && mouseY < height/2+300 && mode == 0)
-		{
-			exit();
 		}
 		
 		if(mouseX > width/2 && mouseX < width/2+50 && mouseY > height/2-130 && mouseY < height/2-80 && mode == 3)
