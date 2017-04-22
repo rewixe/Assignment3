@@ -13,6 +13,8 @@ public class Game extends PApplet
 	PFont myFont;
 	PFont myFont2;
 	int lvlCnt = 1;
+	static boolean[] keys = new boolean[1000];
+	static float timeDelta = 1.0f / 60.0f;
 	
 	static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 
@@ -29,15 +31,11 @@ public class Game extends PApplet
 	
 	public void setup()
 	{
-		Spaceship player0 = new Spaceship(this, 250, 250, 0, 30, 'w', 's', 'a', 'd', ' ', 0);
-		Spaceship player1 = new Spaceship(this, 250, 248, 0, 32, 'w', 's', 'a', 'd', ' ', 1);
+		Spaceship player0 = new Spaceship(this, 'w', 's', 'a', 'd', 250, 250, 0, 30, ' ', 0);
+		Spaceship player1 = new Spaceship(this, 'w', 's', 'a', 'd', 250, 248, 0, 32, ' ', 1);
 		gameObjects.add(player0);
 		gameObjects.add(player1);
 	}
-	
-	static boolean[] keys = new boolean[1000];
-
-	static float timeDelta = 1.0f / 60.0f;
 
 	public void keyPressed()
 	{

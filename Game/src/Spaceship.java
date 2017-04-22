@@ -8,14 +8,19 @@ public class Spaceship extends GameObject
 	
 	PApplet parent;
 	
-	PVector v;
-	PVector acc;
-	PVector f;
 	float theta; 
+	char n, s, w, e;
 	float radius;
     float wgt = 1;
 	PShape shape, flame;
-	char n, s, w, e;
+	
+	PVector v;
+	PVector acc;
+	PVector f;
+	
+	static float sps = 2;
+	static float limit = 1.0f / sps;
+	static float limitPass = limit;
 	
 	static char fire;
 	private int K = 2;
@@ -24,7 +29,7 @@ public class Spaceship extends GameObject
 	static float speed = 300;
 	public static int score;
 	
-	Spaceship(Game p, float x, float y, float theta, float size, char n, char s, char w, char e, char fire, int type)
+	Spaceship(Game p, char n, char s, char w, char e,  float x, float y, float theta, float size, char fire, int type)
 	{
 		parent = p;
 	    pos = new PVector(x, y);
@@ -104,10 +109,6 @@ public class Spaceship extends GameObject
 		
 	}
 	
-	static float sps = 2;
-	static float limit = 1.0f / sps;
-	static float limitPass = limit;
-	
 	void render()
 	{
 		parent.pushMatrix();
@@ -181,13 +182,13 @@ public class Spaceship extends GameObject
 	    	parent.popMatrix();
 	    }
 	    
-	    if (Game.checkKey(fire) && limitPass > limit && ammo > 0 && Game.mode == 1 && type == 0)
+	    if (Game.mode == 1 && Game.checkKey(fire) && type == 0 && limitPass > limit && ammo > 0)
 	    {
 	    	PVector bp = PVector.add(pos, PVector.mult(forward, 40));
-	    	Shot b = new Shot((Game) parent, bp.x, bp.y, theta, 20, 5, 0);
-	    	Game.gameObjects.add(b);
+	    	Shot s = new Shot((Game) parent, bp.x, bp.y, theta, 20, 5, 0);
+	    	Game.gameObjects.add(s);
 	    	limitPass = 0;
-	    	ammo --;
+	    	ammo--;
 	    }
 	    
 	    acc = PVector.div(f, wgt);
