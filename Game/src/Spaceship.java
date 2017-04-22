@@ -5,35 +5,35 @@ import processing.core.PVector;
 
 public class Spaceship extends GameObject 
 {
-	
 	PApplet parent;
 	
+	//Variables
 	float theta; 
-	char n, s, w, e;
-	float radius;
-    float wgt = 1;
-	PShape shape, flame;
+	char n, s, w, e; //Controls
+	float radius; 	 //Collision radius
+    float wgt = 1;   //Weight of spaceship, used for momentum
+	PShape shape, flame;	//PShapes for spaceship and it's flame
 	
-	PVector v;
-	PVector acc;
-	PVector f;
+	PVector v;		//d/t
+	PVector acc;	//change in v
+	PVector f;		//f=wgt*acc
 	
-	static float sps = 2;
-	static float limit = 1.0f / sps;
-	static float limitPass = limit;
+	static float sps = 2;				//shots speed
+	static float limit = 1.0f / sps;	//limits consecutive shots
+	static float limitPass = limit; 	//allows shots after limit is passed
 	
-	static char fire;
+	static char fire;    //Control
 	private int K = 2;
-	int type;
-	public static int ammo;
+	int type; 			//Changes type of spaceship shape
+	public static int ammo; 
 	static float speed = 300;
 	public static int score;
 	
 	Spaceship(Game p, char n, char s, char w, char e,  float x, float y, float theta, float size, char fire, int type)
 	{
 		parent = p;
-	    pos = new PVector(x, y);
-	    forward = new PVector(0, -1);
+	    pos = new PVector(x, y);  		//position
+	    forward = new PVector(0, -1);	//vectors
 	    acc = new PVector(0,0);
 	    v = new PVector(0,0);
 	    f = new PVector(0, 0);
@@ -42,17 +42,18 @@ public class Spaceship extends GameObject
 	    radius = size / 2;
 	    this.type = type;
 	    
-	    this.w = w;
+	    this.w = w;	//controls
 	    this.e = e;
 	    this.n = n;
 	    this.s = s;
 	    this.fire = fire;
 	    Spaceship.ammo = 10;
 	    Spaceship.score = 0;
-	    start();
+	    start();		//calls to start()
 		
 	}
 	
+	//Creates shape. Different shape created depending on type passed
 	void start()
 	{
 		if(type == 0)
@@ -109,6 +110,7 @@ public class Spaceship extends GameObject
 		
 	}
 	
+	//Renders spaceship
 	void render()
 	{
 		parent.pushMatrix();
@@ -118,11 +120,13 @@ public class Spaceship extends GameObject
 	    parent.popMatrix(); 
 	}
 	
+	//Update position, rotation etc. of spaceship
 	void update()
 	{
 		forward.x = PApplet.sin(theta);
 	    forward.y  = -PApplet.cos(theta);
 	    
+	    //Controls
 	    if (Game.checkKey(n))
 	    {
 	      f.add(PVector.mult(forward, speed));      
@@ -143,6 +147,7 @@ public class Spaceship extends GameObject
 	      theta += 0.1f;
 	    }
 	    
+	    //Stops the spaceship disappearing from the screen, infinite window
 	    if(this.pos.y < -30)
 	    {
 	    	this.pos.y = parent.height + 15;
@@ -163,6 +168,7 @@ public class Spaceship extends GameObject
 	    	this.pos.x = 0 - 30;
 	    }
 	    
+	    //Creates a rocket flame effect when ship moves forward
 	    if(Game.checkKey(n) && type == 1)
 	    {
 	    	parent.pushMatrix();
@@ -182,15 +188,17 @@ public class Spaceship extends GameObject
 	    	parent.popMatrix();
 	    }
 	    
+	    //Firing shots, checks to see if all conditions are met
 	    if (Game.mode == 1 && Game.checkKey(fire) && type == 0 && limitPass > limit && ammo > 0)
 	    {
 	    	PVector bp = PVector.add(pos, PVector.mult(forward, 40));
-	    	Shot s = new Shot((Game) parent, bp.x, bp.y, theta, 20, 5, 0);
+	    	Shot s = new Shot((Game) parent, bp.x, bp.y, theta, 20, 5, 0); 	//new shot created
 	    	Game.gameObjects.add(s);
 	    	limitPass = 0;
-	    	ammo--;
+	    	ammo--;  	//decreases ammo stock
 	    }
 	    
+	    //defining vectors 
 	    acc = PVector.div(f, wgt);
 	    v.add(PVector.mult(acc, Game.timeDelta));
 	    pos.add(PVector.mult(v, Game.timeDelta));
@@ -198,10 +206,12 @@ public class Spaceship extends GameObject
 	    v.mult(0.99f);
 	    limitPass += Game.timeDelta;
 		
+	    //Controlling collisions between different objects
 	    for(int i = 0 ; i < Game.gameObjects.size() ; i ++)
 	    {
 	        GameObject go = Game.gameObjects.get(i);
 	        
+	        //Green blocks
 	        if (go instanceof SpecialObj)
 	        {
 	          SpecialObj p = (SpecialObj) go; // p is of type so the only method we can call on p is applyTo
@@ -212,6 +222,7 @@ public class Spaceship extends GameObject
 	          }
 	        }
 	        
+	        //Red enemies
 	        if (go instanceof NegativeObj)
 	        {
 	          NegativeObj p = (NegativeObj) go;
@@ -222,6 +233,7 @@ public class Spaceship extends GameObject
 	          }
 	        }
 	        
+	        //Shot collision
 	        if (go instanceof Hit)
 	        {
 	          Hit h = (Hit) go;

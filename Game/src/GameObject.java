@@ -1,5 +1,6 @@
 import processing.core.PVector;
 
+//Game object abstract class 
 abstract class GameObject 
 {
 	PVector pos;
