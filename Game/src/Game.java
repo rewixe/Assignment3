@@ -8,27 +8,28 @@ public class Game extends PApplet
 {
 	public static Game applet;
 	
-	static int mode = 0;
-	//static int score;
+	//Variables
+	static int mode = 0;	//variables for different modes, game mode == 1, settings mode == 3 etc.
 	PFont myFont;
 	PFont myFont2;
-	int lvlCnt = 1;
+	int lvlCnt = 1; 	//level variable
 	static boolean[] keys = new boolean[1000];
-	static float timeDelta = 1.0f / 60.0f;
+	static float timeDelta = 1.0f / 60.0f; 		//time slice
 	
-	static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+	static ArrayList<GameObject> gameObjects = new ArrayList<GameObject>(); 	//Game objects arraylist
 
 	public static void main(String[] args) 
 	{
 		PApplet.main("Game");
 	}
 	
-	public void settings()
+	public void settings()   //Screen size
 	{
 		//fullScreen();
 		size(1000, 800);
 	}
 	
+	//Creates spaceship instances
 	public void setup()
 	{
 		Spaceship player0 = new Spaceship(this, 'w', 's', 'a', 'd', 250, 250, 0, 30, ' ', 0);
@@ -37,6 +38,7 @@ public class Game extends PApplet
 		gameObjects.add(player1);
 	}
 
+	//Methods which finds which keys are pressed
 	public void keyPressed()
 	{
 		keys[keyCode] = true;
@@ -56,12 +58,14 @@ public class Game extends PApplet
 		return false;
 	}
 	
+	//Draw method
 	public void draw()
 	{	
 		background(0);
 		stroke(0, 255, 0);
 		noFill();
 		
+		//Introduction screen which user sees upon starting program
 		if(mode == 0)
 		{
 			pushStyle();
@@ -72,7 +76,7 @@ public class Game extends PApplet
 		    textFont(myFont);
 		    pushStyle();
 		    textAlign(CENTER);
-			text("SPACE SHOOTER", width/2, height/2);
+			text("SPACE SHOOTER", width/2, height/2);	//title
 			popStyle();
 			myFont2 = createFont(fontName2, 17);
 			textFont(myFont2);
@@ -80,18 +84,18 @@ public class Game extends PApplet
 			fill(0, 255, 0);
 			textAlign(CENTER);
 			text("Shoot green blocks to increase score, "
-					+ "hit them to increase ammo!", width/2, height/2 + 30);
+					+ "hit them to increase ammo!", width/2, height/2 + 30);  	//instructions
 			popStyle();
 			pushStyle();
 			fill(255, 0, 0);
 			textAlign(CENTER);
-			text("Avoid red blocks!", width/2, height/2 + 60);
+			text("Avoid red blocks!", width/2, height/2 + 60);	//instruction
 			popStyle();
 			pushStyle();
 			textAlign(CENTER);
 			noFill();
 			stroke(255, 0, 0);
-			rect(width/2-75, height/2+100, 150, 60, 20);
+			rect(width/2-75, height/2+100, 150, 60, 20);		//buttons which allow mode change
 			text("P L A Y", width/2, height/2 + 135);
 			rect(width/2-75, height/2+170, 150, 60, 20);
 			text("S E T T I N G S", width/2, height/2 + 205);
@@ -102,9 +106,10 @@ public class Game extends PApplet
 			strokeWeight(1);
 			ellipse(250, 265, 130, 130);
 			line(315, 265, 380, 210);
-			text("WASD to move, space to shoot", 380, 210);
+			text("WASD to move, space to shoot", 380, 210); 	//instructions
 			popStyle();
 			
+			//Goes through array list and calls update() and render() methods
 			for (int i = gameObjects.size() -1 ; i >= 0  ; i --)
 			{
 				GameObject go = gameObjects.get(i);
@@ -117,6 +122,7 @@ public class Game extends PApplet
 			
 		} //end mode 0
 		
+		//Game mode
 		if(mode == 1 && Spaceship.score >= 0)
 		{	
 			noCursor();
@@ -134,6 +140,7 @@ public class Game extends PApplet
 			text(lvlCnt, (width/2) + 120, height-30);
 			popStyle();
 			
+			//Levels 
 			for (int i = gameObjects.size() -1 ; i >= 0  ; i --)
 			{
 				GameObject go = gameObjects.get(i); 
@@ -146,7 +153,7 @@ public class Game extends PApplet
 				
 				if(Spaceship.score > 40 && mode == 1)
 				{
-					Enemy.spsEnemy = 1.5f;
+					Enemy.spsEnemy = 1.5f; //increases number of shots fired by enemies
 					lvlCnt = 2;
 				}
 				
@@ -168,6 +175,7 @@ public class Game extends PApplet
 				}
 			}
 			
+			//red enemy and green block creation
 			if (frameCount % 60 == 0)
 			{
 				Target ammo = new Target(this);
@@ -181,11 +189,13 @@ public class Game extends PApplet
 		
 		} // end mode 1
 		
+		//ends the game, shows game over
 		if(mode == 1 && Spaceship.score < 0)
 		{
 			mode = 2;
 		}
 		
+		//GAME OVER mode
 		if(mode == 2)
 		{
 			pushStyle();
@@ -198,6 +208,7 @@ public class Game extends PApplet
 			popStyle();
 		}
 		
+		//Settings screen
 		if(mode == 3)
 		{
 			pushStyle();
@@ -261,6 +272,7 @@ public class Game extends PApplet
 			popStyle();
 		}
 		
+		//Victory screen when player wins
 		if(mode == 5)
 		{
 			pushStyle();
@@ -273,6 +285,7 @@ public class Game extends PApplet
 		}
 	}//END DRAW
 	
+	//Buttons creation on settings screen
 	public void mouseClicked()
 	{
 		if(mouseX > width/2-75 && mouseX < width/2+75 && mouseY > height/2+100 && mouseY < height/2+160 && mode == 0)
