@@ -3,6 +3,7 @@ import processing.core.PConstants;
 import processing.core.PShape;
 import processing.core.PVector;
 
+//Green blocks
 public class Target extends GameObject implements SpecialObj
 {
 	public static Target applet;
@@ -10,7 +11,7 @@ public class Target extends GameObject implements SpecialObj
 	PApplet parent;
 	
 	float theta;
-	PShape obstacle;
+	PShape obstacle; //shape of blocks
 	
 	Target(Game p)
 	{
@@ -20,11 +21,13 @@ public class Target extends GameObject implements SpecialObj
 		start();
 	}
 	
+	//Collision handling w/ ship
 	public void applyTo(Spaceship p) 
 	{
 		Spaceship.ammo ++;	
 	}
 
+	//Collision handling w/ shots
 	public void applyTo(Shot p) 
 	{
 		if (Shot.type == 0)
@@ -33,6 +36,7 @@ public class Target extends GameObject implements SpecialObj
 		}
 	}
 	
+	//builds green blocks of different shapes
 	void start()
 	{
 		obstacle = parent.createShape();
@@ -79,6 +83,7 @@ public class Target extends GameObject implements SpecialObj
 		
 	}
 
+	//renders blocks
 	void render() 
 	{
 		parent.pushStyle();
@@ -93,6 +98,7 @@ public class Target extends GameObject implements SpecialObj
 		
 	}
 
+	//updates blocks
 	void update() 
 	{
 		theta += 0.05;

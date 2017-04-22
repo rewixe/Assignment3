@@ -3,6 +3,7 @@ import processing.core.PVector;
 
 class Shot extends GameObject implements Hit
 {
+	//Declaration of variables
 	PApplet parent;
 	float theta;
 	float len;
@@ -14,20 +15,22 @@ class Shot extends GameObject implements Hit
 	Shot(Game p, float x, float y, float theta, float len, float lambda, int type)
 	{
 	    parent = p;
-		pos = new PVector(x, y);
-		forward = new PVector(0, 1);
-		this.theta = theta;
-		this.len = len;
-		this.lambda = lambda;    
+		pos = new PVector(x, y);  //position of shot
+		forward = new PVector(0, 1);	//forward vector of shot
+		this.theta = theta;		//rotation of shot
+		this.len = len;			//size of shot
+		this.lambda = lambda;   //half-life  
 		this.on = 0;
 		this.type = type;
     }
 	
+	//Collision handling. If a shot hits a ship, the ship's score decreases
 	public void applyTo(Spaceship p) 
 	{
 		Spaceship.score --;	
 	}
 	
+	//Renders shots
 	void render()
 	{
 		parent.pushMatrix();
@@ -40,6 +43,7 @@ class Shot extends GameObject implements Hit
 		parent.popMatrix();
 	}
 	
+	//Updates shot position etc.
 	void update()
 	{
 		forward.x = PApplet.sin(theta);
@@ -74,6 +78,7 @@ class Shot extends GameObject implements Hit
 			  Game.gameObjects.remove(this);
 		  }
 		  
+		  //Collision handling for when shot hits green block
 		  for(int i = 0 ; i < Game.gameObjects.size() ; i ++)
 		    {
 		        GameObject go = Game.gameObjects.get(i);
